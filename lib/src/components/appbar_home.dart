@@ -1,28 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   final Color backgroundColor = new Color(0xfff8faf8);
   final Image imageCenter;
   final AppBar appBar;
-  final Icon leftIcon;
-  final Icon rightIcon;
+  final String leftIconURL;
+  final String rightIconURL;
 
   AppBarHome(
-      {Key key, this.imageCenter, this.appBar, this.leftIcon, this.rightIcon})
+      {Key key,
+      this.imageCenter,
+      this.appBar,
+      this.leftIconURL,
+      this.rightIconURL})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return new AppBar(
+    return AppBar(
       backgroundColor: backgroundColor,
       centerTitle: true,
       elevation: 1.0,
-      leading: leftIcon,
+      leading: Container(
+        padding: EdgeInsets.all(10),
+        child: SvgPicture.asset(
+          leftIconURL,
+        ),
+      ),
       title: SizedBox(height: 45.0, child: imageCenter),
       actions: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 12.0),
-          child: rightIcon,
+          child: Container(
+            width: 30,
+            height: 30,
+            child: SvgPicture.asset(
+              rightIconURL,
+            ),
+          ),
         )
       ],
     );

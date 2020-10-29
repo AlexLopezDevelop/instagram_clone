@@ -21,6 +21,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+
+  flutter_svg: ^0.19.1
+
   flutter:
     sdk: flutter
 
@@ -49,6 +52,20 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
     - assets/images/instagram-logo.png
+    - assets/icons/add-icon.svg
+    - assets/icons/add-selected-icon.svg
+    - assets/icons/bookmark-icon.svg
+    - assets/icons/bookmark-selected-icon.svg
+    - assets/icons/camera-icon.svg
+    - assets/icons/heart-icon.svg
+    - assets/icons/heart-selected-icon.svg
+    - assets/icons/home-icon.svg
+    - assets/icons/home-selected-icon.svg
+    - assets/icons/more-icon.svg
+    - assets/icons/search-icon.svg
+    - assets/icons/search-selected-icon.svg
+    - assets/icons/sent-icon.svg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
