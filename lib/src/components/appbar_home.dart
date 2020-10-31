@@ -23,18 +23,20 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       elevation: 1.0,
       leading: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.only(
+          top: 12,
+          bottom: 12,
+        ),
         child: SvgPicture.asset(
           leftIconURL,
         ),
       ),
-      title: SizedBox(height: 45.0, child: imageCenter),
+      title: SizedBox(height: 50.0, child: imageCenter),
       actions: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 12.0),
           child: Container(
-            width: 30,
-            height: 30,
+            padding: EdgeInsets.only(top: 12, bottom: 12),
             child: SvgPicture.asset(
               rightIconURL,
             ),
