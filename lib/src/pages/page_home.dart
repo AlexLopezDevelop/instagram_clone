@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/src/components/appbar_home.dart';
+import 'package:instagram_clone/src/pages/home_body.dart';
 
 class PageHome extends StatefulWidget {
   PageHome({Key key}) : super(key: key);
 
-  _PageHome createState() => new _PageHome();
+  _PageHome createState() => new _PageHome(index: null);
 }
 
 class _PageHome extends State<PageHome> {
@@ -18,9 +19,9 @@ class _PageHome extends State<PageHome> {
           imageCenter: Image.asset('assets/images/instagram-logo.png'),
           appBar: AppBar(),
           leftIconURL: "assets/icons/camera-icon.svg",
-          rightIconURL: "assets/icons/sent-icon.svg",
+          rightIconURL: "assets/icons/sent-icon.png",
         ),
-        body: Container(),
+        body: HomeBody(),
         bottomNavigationBar: BottomNavigationBar(
             onTap: (int index) {
               setState(() {

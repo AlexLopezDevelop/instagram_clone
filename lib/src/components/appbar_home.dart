@@ -36,8 +36,8 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.only(right: 12.0),
           child: Container(
-            padding: EdgeInsets.only(top: 12, bottom: 12),
-            child: SvgPicture.asset(
+            padding: EdgeInsets.only(top: 14, bottom: 14),
+            child: Image.asset(
               rightIconURL,
             ),
           ),
