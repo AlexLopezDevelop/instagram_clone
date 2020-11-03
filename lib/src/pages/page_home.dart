@@ -6,12 +6,26 @@ import 'package:instagram_clone/src/pages/home_body.dart';
 class PageHome extends StatefulWidget {
   PageHome({Key key}) : super(key: key);
 
-  _PageHome createState() => new _PageHome(index: null);
+  _PageHome createState() => new _PageHome();
 }
 
 class _PageHome extends State<PageHome> {
-  _PageHome({@required this.index});
-  int index;
+  int currentPage = 0;
+  List<Widget> tabs = <Widget>[
+    HomeBody(),
+    Container(
+      color: Colors.red,
+    ),
+    Container(
+      color: Colors.yellow,
+    ),
+    Container(
+      color: Colors.blue,
+    ),
+    Container(
+      color: Colors.black,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,11 +35,11 @@ class _PageHome extends State<PageHome> {
           leftIconURL: "assets/icons/camera-icon.svg",
           rightIconURL: "assets/icons/sent-icon.png",
         ),
-        body: HomeBody(),
+        body: tabs[currentPage],
         bottomNavigationBar: BottomNavigationBar(
             onTap: (int index) {
               setState(() {
-                this.index = index;
+                this.currentPage = index;
               });
               //_navigateToScreens(index);
             },
@@ -37,7 +51,7 @@ class _PageHome extends State<PageHome> {
                   width: 30,
                   height: 30,
                   child: SvgPicture.asset(
-                    index == 0
+                    currentPage == 0
                         ? "assets/icons/home-selected-icon.svg"
                         : "assets/icons/home-icon.svg",
                   ),
@@ -49,7 +63,7 @@ class _PageHome extends State<PageHome> {
                   width: 30,
                   height: 30,
                   child: SvgPicture.asset(
-                    index == 1
+                    currentPage == 1
                         ? "assets/icons/search-selected-icon.svg"
                         : "assets/icons/search-icon.svg",
                   ),
@@ -61,7 +75,7 @@ class _PageHome extends State<PageHome> {
                   width: 30,
                   height: 30,
                   child: SvgPicture.asset(
-                    index == 2
+                    currentPage == 2
                         ? "assets/icons/add-selected-icon.svg"
                         : "assets/icons/add-icon.svg",
                   ),
@@ -73,7 +87,7 @@ class _PageHome extends State<PageHome> {
                   width: 30,
                   height: 30,
                   child: SvgPicture.asset(
-                    index == 3
+                    currentPage == 3
                         ? "assets/icons/heart-selected-icon.svg"
                         : "assets/icons/heart-icon.svg",
                   ),
@@ -84,11 +98,35 @@ class _PageHome extends State<PageHome> {
                 icon: Container(
                   width: 30,
                   height: 30,
-                  child: SvgPicture.asset(
-                    index == 4
-                        ? "assets/icons/home-selected-icon.svg"
-                        : "assets/icons/home-icon.svg",
-                  ),
+                  child: currentPage == 4
+                      ? Container(
+                          width: 100.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/user-logo.jpg"),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius:
+                                BorderRadius.all(new Radius.circular(50.0)),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1.2,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          height: 40.0,
+                          width: 40.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image:
+                                    AssetImage("assets/images/user-logo.jpg")),
+                          ),
+                        ),
                 ),
               )
             ]));

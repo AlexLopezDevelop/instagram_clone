@@ -10,7 +10,7 @@ class InstaStoriesList extends StatelessWidget {
       itemBuilder: (context, index) => index == 0
           ? SizedBox(
               child: InstaStoryItem(),
-              height: 100,
+              height: 113,
             )
           : InstaPostItem(),
     );

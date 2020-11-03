@@ -10,11 +10,18 @@ class InstaPostItem extends StatefulWidget {
 
 class _InstaPostItem extends State<InstaPostItem> {
   bool liked = false;
+  bool savedPost = false;
   bool showHeartOverlay = false;
 
-  _pressed() {
+  _pressedLikeButton() {
     setState(() {
       liked = !liked;
+    });
+  }
+
+  _pressedSaveButton() {
+    setState(() {
+      savedPost = !savedPost;
     });
   }
 
@@ -110,7 +117,7 @@ class _InstaPostItem extends State<InstaPostItem> {
                             color: liked ? Color(0xffed4956) : Colors.black,
                           ),
                         ),
-                        onTap: () => _pressed()),
+                        onTap: () => _pressedLikeButton()),
                     Container(
                       width: 28,
                       height: 28,
@@ -129,14 +136,19 @@ class _InstaPostItem extends State<InstaPostItem> {
                     ),
                   ],
                 ),
-                Container(
-                  width: 31,
-                  height: 31,
-                  margin: EdgeInsets.only(right: 10),
-                  child: SvgPicture.asset(
-                    "assets/icons/bookmark-icon.svg",
+                GestureDetector(
+                  child: Container(
+                    width: 31,
+                    height: 31,
+                    margin: EdgeInsets.only(right: 10),
+                    child: SvgPicture.asset(
+                      savedPost
+                          ? "assets/icons/bookmark-selected-icon.svg"
+                          : "assets/icons/bookmark-icon.svg",
+                    ),
                   ),
-                ),
+                  onTap: () => _pressedSaveButton(),
+                )
               ],
             )),
         // Likes
@@ -147,9 +159,17 @@ class _InstaPostItem extends State<InstaPostItem> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        // Comment
+        // View Comments
         Padding(
-          padding: EdgeInsets.fromLTRB(16, 16, 0, 8),
+          padding: EdgeInsets.fromLTRB(16, 10, 0, 0),
+          child: Text(
+            "Ver todos los 17 comentarios",
+            style: TextStyle(color: Colors.grey),
+          ),
+        ),
+        // Write comment
+        Padding(
+          padding: EdgeInsets.fromLTRB(16, 5, 0, 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -180,7 +200,7 @@ class _InstaPostItem extends State<InstaPostItem> {
             "Hace 12 horas",
             style: TextStyle(color: Colors.grey),
           ),
-        )
+        ),
       ],
     );
   }
