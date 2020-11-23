@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/src/pages/page_home.dart';
+import 'dart:async';
 
-void main() => runApp(MyApp());
+import 'package:camera/camera.dart';
+import 'package:instagram_clone/src/pages/page_slider.dart';
+
+List<CameraDescription> cameras;
+
+Future<Null> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,6 +23,6 @@ class MyApp extends StatelessWidget {
           primaryIconTheme: IconThemeData(color: Colors.black),
           textTheme: TextTheme(title: TextStyle(color: Colors.black)),
         ),
-        home: PageHome());
+        home: PageSlider(cameras: cameras));
   }
 }

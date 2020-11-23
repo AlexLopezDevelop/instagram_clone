@@ -23,6 +23,7 @@ environment:
 dependencies:
 
   flutter_svg: ^0.19.1
+  camera: ^0.5.8+11
 
   flutter:
     sdk: flutter

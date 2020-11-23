@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/src/components/appbar_home.dart';
 import 'package:instagram_clone/src/pages/home_body.dart';
+import 'package:instagram_clone/src/pages/page_camera.dart';
 
 class PageHome extends StatefulWidget {
-  PageHome({Key key}) : super(key: key);
+  final List<CameraDescription> cameras;
+  PageHome({this.cameras});
 
   _PageHome createState() => new _PageHome();
 }
@@ -12,6 +15,7 @@ class PageHome extends StatefulWidget {
 class _PageHome extends State<PageHome> {
   int currentPage = 0;
   List<Widget> tabs = <Widget>[
+    //CameraScreen(widget.cameras),
     HomeBody(),
     Container(
       color: Colors.red,
@@ -26,6 +30,7 @@ class _PageHome extends State<PageHome> {
       color: Colors.black,
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
