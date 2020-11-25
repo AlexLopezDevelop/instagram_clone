@@ -1,0 +1,77 @@
+{
+	"content": {
+		"stories": [
+			{
+				"media": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4",
+				"type": "media/video",
+				"title": "DEMO MEDIA CONTENT",
+				"user": "alextarrago",
+				"views": 598,
+				"created_at": "25/11/2020 17:00:00"
+			},
+			{
+				"media": "https://www.fcbarcelonanoticias.com/uploads/s1/12/15/27/3/fcb-camiseta17_4_641x361.jpeg",
+				"type": "media/image",
+				"title": "Força barça!",
+				"user": "xsenmarti",
+				"views": 988,
+				"created_at": "25/11/2020 17:30:00"
+			},
+			{
+				"media": "http://draftmag.com/new/wp-content/uploads/beer-bar.jpg",
+				"type": "media/image",
+				"title": "Avui no vinc a classe!",
+				"user": "sergividal",
+				"views": 658,
+				"created_at": "25/11/2020 17:35:00"
+			},
+			{
+				"media": "https://upload.wikimedia.org/wikipedia/en/d/d5/Professor_%28Money_Heist%29.jpg",
+				"type": "media/image",
+				"title": "Heu de venir a classe!!",
+				"user": "alextarrago",
+				"views": 25,
+				"created_at": "25/11/2020 17:45:00"
+			}
+		],
+		"posts": [{
+				"media": "https://deadline.com/wp-content/uploads/2018/04/casa-de-papel-money-heist.jpeg",
+				"type": "media/image",
+				"title": "¡Brutal esta serie!",
+				"user": "sergividal",
+				"likes": 200,
+				"created_at": "25/11/2020 18:30:00",
+				"comments": [
+					{
+						"user": "alextarrago",
+						"comment": "Me encanta!",
+						"created_at": "25/11/2020 18:40:00"
+					},
+					{
+						"user": "xsenmarti",
+						"comment": "No es para tanto...",
+						"created_at": "25/11/2020 18:50:00"
+					}
+				]
+			},
+			{
+				"media": "https://www.lavanguardia.com/r/GODO/LV/p6/WebSite/2019/08/05/Recortada/img_psola_20190805-083354_imagenes_lv_terceros_hun601b_0157r-2-ky1D-U463861972569GwF-992x558@LaVanguardia-Web.jpg",
+				"type": "media/image",
+				"title": "Aquesta si que es bona!",
+				"user": "xsenmarti",
+				"likes": 30,
+				"created_at": "25/11/2020 18:00:00",
+				"comments": []
+			},
+			{
+				"media": "https://www.merca2.es/wp-content/uploads/2020/11/gambito-de-dama.jpg",
+				"type": "media/image",
+				"title": "No teniu ni idea...",
+				"user": "alextarrago",
+				"likes": 25,
+				"created_at": "25/11/2020 18:10:00",
+				"comments": []
+			}
+		]
+	}
+}

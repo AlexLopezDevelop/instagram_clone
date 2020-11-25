@@ -1,5 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:instagram_clone/src/models/story.dart';
 import 'package:instagram_clone/src/pages/page_story.dart';
+import 'dart:async';
+
+/*Future<List<Story>> _getStories() async {
+  var data = await rootBundle.loadString("assets/data/instasalle.json");
+  var jsonData = json.decode(data);
+  List<Story> stories = [];
+  for (var story in jsonData) {}
+}*/
 
 final stories = Expanded(
     child: ListView.builder(
