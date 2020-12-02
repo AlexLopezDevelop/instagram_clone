@@ -3,7 +3,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/src/components/appbar_home.dart';
 import 'package:instagram_clone/src/pages/home_body.dart';
-import 'package:instagram_clone/src/pages/page_camera.dart';
 
 class PageHome extends StatefulWidget {
   final List<CameraDescription> cameras;

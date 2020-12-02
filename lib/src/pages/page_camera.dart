@@ -60,8 +60,6 @@ class CameraScreenState extends State<CameraScreen> {
     await Directory(dirPath).create(recursive: true);
     final String filePath = '$dirPath/${timestamp()}.jpg';
 
-    print(filePath);
-
     if (controller.value.isTakingPicture) {
       // A capture is already pending, do nothing.
       return null;
