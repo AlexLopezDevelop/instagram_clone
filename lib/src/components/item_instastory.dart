@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/src/models/story.dart';
+import 'package:instagram_clone/src/models/story.dart';
 import 'package:instagram_clone/src/pages/page_story.dart';
 
 class InstaStoryItem extends StatelessWidget {
-  InstaStoryItem(this.posts);
-  List posts = [];
+  InstaStoryItem(this.stories);
+  List<Stories> stories = [];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,18 +18,19 @@ class InstaStoryItem extends StatelessWidget {
           Expanded(
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: posts.length,
+                itemCount: stories.length,
                 itemBuilder: (context, index) => Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         // TODO: Check if have stories, NOTE: Only Affects to the main user
                         GestureDetector(
-                          onTap: () => index == 0
+                          onTap: () => stories[index] != null
                               ? Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PageStory()))
+                                      builder: (context) => PageStory(
+                                          media: stories[index].media)))
                               : {},
                           child: Stack(
                             alignment: Alignment.bottomRight,
@@ -61,7 +64,7 @@ class InstaStoryItem extends StatelessWidget {
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 5),
-                          child: Text("paco"),
+                          child: Text(stories[index].user),
                         )
                       ],
                     )),

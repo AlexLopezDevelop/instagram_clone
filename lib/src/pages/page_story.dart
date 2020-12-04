@@ -3,10 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/story_view.dart';
-import 'package:path_provider/path_provider.dart';
+
+import 'dart:core';
+
+enum UrlType { IMAGE, VIDEO, UNKNOWN }
 
 class PageStory extends StatefulWidget {
-  PageStory({Key key}) : super(key: key);
+  final String media;
+  PageStory({Key key, @required this.media}) : super(key: key);
 
   _PageStory createState() => new _PageStory();
 }
@@ -16,14 +20,12 @@ class _PageStory extends State<PageStory> {
   Widget build(BuildContext context) {
     final controller = StoryController();
     final List<StoryItem> stories = [
-      StoryItem.text(title: "Paco", backgroundColor: Colors.blue),
-      // Hardcoded image to show that image its local stored
-      StoryItem.pageProviderImage(FileImage(File(
-          "/data/user/0/com.example.instagram_clone/app_flutter/Pictures/flutter_test/1606328245736.jpg"))),
-      StoryItem.pageImage(
-          url:
-              "https://image.freepik.com/foto-gratis/vista-vertical-torre-eiffel-paris-francia_1258-3169.jpg",
-          controller: null)
+      getUrlType(widget.media) == UrlType.IMAGE
+          ? StoryItem.pageImage(url: widget.media, controller: null)
+          : StoryItem.pageVideo(
+              /*widget.media*/ "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+              controller:
+                  controller), // Changed api video because its not available
     ];
     return Material(
         child: StoryView(
@@ -35,5 +37,22 @@ class _PageStory extends State<PageStory> {
         Navigator.of(context).pop();
       },
     ));
+  }
+}
+
+UrlType getUrlType(String url) {
+  Uri uri = Uri.parse(url);
+  String typeString = uri.path.substring(uri.path.length - 4).toLowerCase();
+  if (typeString == "jpeg") {
+    return UrlType.IMAGE;
+  }
+  typeString = uri.path.substring(uri.path.length - 3).toLowerCase();
+  if (typeString == "jpg") {
+    return UrlType.IMAGE;
+  }
+  if (typeString == "mp4") {
+    return UrlType.VIDEO;
+  } else {
+    return UrlType.UNKNOWN;
   }
 }

@@ -1,9 +1,23 @@
 import 'dart:async';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_clone/src/models/story.dart';
 
 class InstaPostItem extends StatefulWidget {
-  InstaPostItem({Key key}) : super(key: key);
+  final String userTitle;
+  final String postImage;
+  final List<Comments> comments;
+  final int likes;
+  final DateTime time;
+  InstaPostItem(
+      {Key key,
+      @required this.userTitle,
+      @required this.postImage,
+      @required this.comments,
+      @required this.likes,
+      @required this.time})
+      : super(key: key);
 
   _InstaPostItem createState() => new _InstaPostItem();
 }
@@ -69,7 +83,7 @@ class _InstaPostItem extends State<InstaPostItem> {
                     width: 10.0,
                   ),
                   Text(
-                    "Louis Vuitton",
+                    widget.userTitle,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )
                 ],
@@ -84,7 +98,7 @@ class _InstaPostItem extends State<InstaPostItem> {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Image.asset("assets/images/post-1.jpg"),
+              Image.network(widget.postImage),
               showHeartOverlay
                   ? Icon(
                       Icons.favorite,
@@ -155,18 +169,20 @@ class _InstaPostItem extends State<InstaPostItem> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            "Alex Lopez y 256 personas le han dado like",
+            "Alex Lopez y ${widget.likes} personas le han dado like",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        // View Comments
-        Padding(
-          padding: EdgeInsets.fromLTRB(16, 10, 0, 0),
-          child: Text(
-            "Ver todos los 17 comentarios",
-            style: TextStyle(color: Colors.grey),
-          ),
-        ),
+        widget.comments.length == 0
+            ? Container()
+            // View Comments
+            : Padding(
+                padding: EdgeInsets.fromLTRB(16, 10, 0, 0),
+                child: Text(
+                  "Ver todos los ${widget.comments.length} comentarios",
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ),
         // Write comment
         Padding(
           padding: EdgeInsets.fromLTRB(16, 5, 0, 5),
@@ -197,7 +213,7 @@ class _InstaPostItem extends State<InstaPostItem> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            "Hace 12 horas",
+            "Hace ${DateFormat.H().format(widget.time)} horas",
             style: TextStyle(color: Colors.grey),
           ),
         ),
